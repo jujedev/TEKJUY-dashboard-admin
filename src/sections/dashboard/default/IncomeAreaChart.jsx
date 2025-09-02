@@ -12,12 +12,15 @@ import { LineChart } from '@mui/x-charts/LineChart';
 // Sample data
 const monthlyLabels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 const weeklyLabels = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+const dailyLabels = ['00:00', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', '23:59'];
 
 const monthlyData1 = [76, 85, 101, 98, 87, 105, 91, 114, 94, 86, 115, 35];
 const weeklyData1 = [31, 40, 28, 51, 42, 109, 100];
+const dailyData1 = [1, 4, 28, 1, 42, 109, 10];
 
 const monthlyData2 = [110, 60, 150, 35, 60, 36, 26, 45, 65, 52, 53, 41];
 const weeklyData2 = [11, 32, 45, 32, 34, 52, 41];
+const dailyData2 = [13, 44, 8, 71, 2, 9, 81];
 
 function Legend({ items, onToggle }) {
   return (
@@ -49,9 +52,23 @@ export default function IncomeAreaChart({ view }) {
     Sessions: true
   });
 
-  const labels = view === 'monthly' ? monthlyLabels : weeklyLabels;
-  const data1 = view === 'monthly' ? monthlyData1 : weeklyData1;
-  const data2 = view === 'monthly' ? monthlyData2 : weeklyData2;
+  /*if(view === 'monthly') {
+    const labels = monthlyLabels;
+    const data1 = monthlyData1;
+    const data2 = monthlyData2;
+  } else if(view === 'weekly'){
+    const labels = weeklyLabels;
+    const data1 = weeklyData1;
+    const data2 = weeklyData2;
+  } else {
+    const labels = dailyLabels;
+    const data1 = dailyData1;
+    const data2 = dailyData2;
+  }*/
+  
+  const labels = view === 'monthly' ? monthlyLabels : view === 'weekly' ? weeklyLabels : dailyLabels;
+  const data1 = view === 'monthly' ? monthlyData1 : view === 'weekly' ? weeklyData1 : dailyData1;
+  const data2 = view === 'monthly' ? monthlyData2 : view === 'weekly' ? weeklyData2 : dailyData2;
 
   const line = theme.palette.divider;
 
@@ -128,4 +145,4 @@ export default function IncomeAreaChart({ view }) {
 
 Legend.propTypes = { items: PropTypes.array, onToggle: PropTypes.func };
 
-IncomeAreaChart.propTypes = { view: PropTypes.oneOf(['monthly', 'weekly']) };
+IncomeAreaChart.propTypes = { view: PropTypes.oneOf(['monthly', 'weekly', 'daily']) };

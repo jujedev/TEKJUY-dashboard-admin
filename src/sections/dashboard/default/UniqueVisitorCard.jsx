@@ -40,6 +40,14 @@ export default function UniqueVisitorCard() {
             >
               Week
             </Button>
+            <Button
+              size="small"
+              onClick={() => setView('daily')}
+              color={view === 'day' ? 'primary' : 'secondary'}
+              variant={view === 'day' ? 'outlined' : 'text'}
+            >
+              Day
+            </Button>
           </Stack>
         </Grid>
       </Grid>
