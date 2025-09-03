@@ -3,9 +3,13 @@ import { lazy } from 'react';
 // project imports
 import Loadable from 'components/Loadable';
 import DashboardLayout from 'layout/Dashboard';
+import { patch } from '@mui/material';
 
-// render- Dashboard
+// render - Dashboard
 const DashboardDefault = Loadable(lazy(() => import('pages/dashboard/default')));
+
+// render - Login
+const Login = Loadable(lazy(() => import('pages/auth/Login')))
 
 // render - color
 const Color = Loadable(lazy(() => import('pages/component-overview/color')));
@@ -21,44 +25,52 @@ const Devices = Loadable(lazy(() => import('pages/devices/devices')));
 
 const MainRoutes = {
   path: '/',
-  element: <DashboardLayout />,
+  //element: <DashboardLayout />,
   children: [
+    // Ruta de login como principal
     {
       path: '/',
-      element: <DashboardDefault />
+      element: <Login />
     },
+    // opcional: si alguien pone /dashboard o /app, recién carga el layout
     {
-      path: 'dashboard',
+      path: '/',
+      element: <DashboardLayout />,
       children: [
         {
-          path: 'default',
-          element: <DashboardDefault />
+        path: 'dashboard',
+        children: [
+          {
+            path: 'default',
+            element: <DashboardDefault />
+          }
+        ]
+        },
+        {
+          path: 'machines',
+          element: <Machines />
+        },
+        {
+          path: 'devices',
+          element: <Devices />
+        },
+        {
+          path: 'typography',
+          element: <Typography />
+        },
+        {
+          path: 'color',
+          element: <Color />
+        },
+        {
+          path: 'shadow',
+          element: <Shadow />
+        },
+        {
+          path: 'sample-page',
+          element: <SamplePage />
         }
       ]
-    },
-    {
-      path: 'machines',
-      element: <Machines />
-    },
-    {
-      path: 'devices',
-      element: <Devices />
-    },
-    {
-      path: 'typography',
-      element: <Typography />
-    },
-    {
-      path: 'color',
-      element: <Color />
-    },
-    {
-      path: 'shadow',
-      element: <Shadow />
-    },
-    {
-      path: 'sample-page',
-      element: <SamplePage />
     }
   ]
 };
