@@ -12,7 +12,8 @@ import Box from '@mui/material/Box';
 
 export default function Machines() {
   return [
-    <Grid container rowSpacing={4.0} columnSpacing={4.0}>
+   // <Grid container rowSpacing={4.0} columnSpacing={4.0}>
+    <Grid container rowSpacing={4.5} columnSpacing={2.75}>
       {/* row 1 */}
       <Grid sx={{ mb: -2.25 }} size={12}>
         <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
@@ -22,10 +23,18 @@ export default function Machines() {
           </Button>
         </Box>
       </Grid>
-      <CardMachine />
-      <CardMachine />
-      <CardMachine />
-      <CardMachine />
+      <Grid size={{ xs: 12, sm: 6, md: 4, lg: 3 }}>
+        <CardMachine />
+      </Grid>
+      <Grid size={{ xs: 12, sm: 6, md: 4, lg: 3 }}>
+        <CardMachine />
+      </Grid>
+      <Grid size={{ xs: 12, sm: 6, md: 4, lg: 3 }}>
+        <CardMachine />
+      </Grid>
+      <Grid size={{ xs: 12, sm: 6, md: 4, lg: 3 }}>
+        <CardMachine />
+      </Grid>
     </Grid>
   ];
 }
