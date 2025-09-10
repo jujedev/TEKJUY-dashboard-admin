@@ -10,8 +10,18 @@ import Stack from '@mui/material/Stack';
 
 // import componentes
 import AnalyticMachine from 'components/cards/statistics/AnalyticMachine';
-
-export default function CardMachine({ name, image, description, status, metrics, extra }) {
+/*      image: panificadoraImg,
+      id: 5,
+      description: "Ubicado en Ingeniería",
+      deviceId: "PLC-S71500-01",
+      host: "192.168.11.24",
+      intervalTime: 60000,
+      port: null,
+      rack: 0,
+      slaveId: null,
+      slot: 1,
+      type: "s7"*/
+export default function CardDevice({ image, id, description, deviceId, host, intervalTime, port, rack, slaveId, slot, type }) {
   return (
     <Card sx={{ height: '100%', width: '100%', textAlign: 'center', p:2 }}>
       {image && (

@@ -9,7 +9,7 @@ export default function Footer() {
       <Typography variant="caption">
         &copy; Todos los derechos reservados{' '}
         <Link href="https://tekjuy.com.ar/" target="_blank" underline="hover">
-          CodedThemes
+          TEKJUY
         </Link>
       </Typography>
       <Stack direction="row" sx={{ gap: 1.5, alignItems: 'center', justifyContent: 'space-between' }}>

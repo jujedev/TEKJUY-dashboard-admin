@@ -9,30 +9,27 @@ import { Grid, minWidth } from '@mui/system';
 
 export default function AnalyticMachine({ title, count, unit, extra }) {
   return (
-      <Card sx={{ p: 1.5, boxShadow: 'none' ,border: 'solid', borderWidth: 1, borderColor: '#e9e9e9ff' }}>
-        <Box sx={{ 
-          width: '100%', 
-          display: 'flex', 
-          justifyContent: 'space-between', 
-          alignItems: 'center' }}>
-          <Typography variant="body2" color="text.secondary">
-            {title}
+    <Card sx={{ p: 1.5, boxShadow: 'none' ,border: 'solid', borderWidth: 1, borderColor: '#e9e9e9ff' }}>
+      <Box sx={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <Typography variant="body2" color="text.secondary">
+          {title}
+        </Typography>
+        <Typography variant="h6" color="text.primary">
+          {count} {unit}
+        </Typography>
+        {extra && (
+          <Typography variant="caption" color="text.secondary">
+            {extra}
           </Typography>
-          <Typography variant="h6" color="text.primary">
-            {count} {unit}
-          </Typography>
-          {extra && (
-            <Typography variant="caption" color="text.secondary">
-              {extra}
-            </Typography>
-          )}
-        </Box>
-      </Card>
+        )}
+      </Box>
+    </Card>
   );
 }
 
 AnalyticMachine.propTypes = {
-  title: PropTypes.string,
+  title: PropTypes.string.isRequired,
   count: PropTypes.string,
+  unit: PropTypes.string,
   extra: PropTypes.string
 };
