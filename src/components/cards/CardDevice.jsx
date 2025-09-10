@@ -1,5 +1,7 @@
 /* eslint-disable prettier/prettier */
 import Card from '@mui/material/Card';
+import Avatar from '@mui/material/Avatar';
+import Box from '@mui/material/Box';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
@@ -23,19 +25,25 @@ import AnalyticMachine from 'components/cards/statistics/AnalyticMachine';
       type: "s7"*/
 export default function CardDevice({ image, id, description, deviceId, host, intervalTime, port, rack, slaveId, slot, type }) {
   return (
-    <Card sx={{ height: '100%', width: '100%', textAlign: 'center', p:2 }}>
+    <Card sx={{ height: '100%', width: '100%', textAlign: 'center', boxShadow: 3}}>
       {image && (
-        <CardMedia
-          sx={{ height: 120, objectFit: 'cover', borderRadius: 3 }}
-          component="img"
-          image={image}
-          alt={name}
-        />
+        <Box sx={{  pt: 1, pb: 1, display: 'flex', justifyContent: 'center', backgroundColor: 'primary.lighter' }}>
+          <Box sx={{ p: 1, backgroundColor: 'white', height: 60, width: 60, borderRadius: 10, boxShadow: 3}}>
+            <CardMedia
+              sx={{ objectFit: 'cover', borderRadius: 2}}
+              component="img"
+              image={image}
+              alt={description}
+            />
+          </Box>
+          <Box>
+            <CardContent>
+              <Typography variant="h6">{deviceId}</Typography>
+            </CardContent>
+          </Box>
+        </Box>
       )}
       <CardContent>
-        {/* Nombre de la máquina */}
-        <Typography variant="h6">{name}</Typography>
-
         {/* Descripción con dispositivos */}
         {description && (
           <Typography variant="body2" color="text.secondary">
@@ -47,7 +55,7 @@ export default function CardDevice({ image, id, description, deviceId, host, int
         <Chip label={status} color={status == 'activo' ? 'success' : 'warning'} sx={{ mt:1, mb:2 }} />
 
         {/* Métricas claves */}
-        {metrics && metrics.length > 0 ? (
+        {/*metrics && metrics.length > 0 ? (
           <Stack container spacing={1.25}>
             {metrics.map((m, idx) => (
               <AnalyticMachine key={idx} {...m} />
@@ -58,7 +66,7 @@ export default function CardDevice({ image, id, description, deviceId, host, int
             <Typography variant="body2" color="text.secondary">
               {extra}
             </Typography>
-        )}
+        )*/}
 
         {/* Alarmas */}
         {/*<Chip label="Sin fallas" color="default" sx={{ mt:2 }} />*/}

@@ -8,13 +8,15 @@ import Box from '@mui/material/Box';
 import CardDevice from 'components/cards/CardDevice';
 
 // images import
-import panificadoraImg from '../../assets/images/machines/panificadora.png'
+import s71200 from '../../assets/images/devices/s71200-g1.jpg'
+import pac3200 from '../../assets/images/devices/pac3200.jpg'
+import v20 from '../../assets/images/devices/v20.jpg'
 // ==============================|| SAMPLE PAGE ||============================== //
 
 export default function Devices() {
   const devices = [
     {
-      image: panificadoraImg,
+      image: s71200,
       id: 1,
       description: "Sala de Control - Monitoreo de sensores",
       deviceId: "PLC-S71200-01",
@@ -27,7 +29,7 @@ export default function Devices() {
       type: "s7"
     },
     {
-      image: panificadoraImg,
+      image: pac3200,
       id: 2,
       description: "Sentron PAC General",
       deviceId: "PAC-3200-01",
@@ -40,7 +42,7 @@ export default function Devices() {
       type: "pac"
     },
     {
-      image: panificadoraImg,
+      image: s71200,
       id: 4,
       description: "Control de Salon",
       deviceId: "PLC-S71200-02",
@@ -53,7 +55,7 @@ export default function Devices() {
       type: "s7"
     },
     {
-      image: panificadoraImg,
+      image: v20,
       id: 5,
       description: "Ubicado en Ingeniería",
       deviceId: "PLC-S71500-01",
