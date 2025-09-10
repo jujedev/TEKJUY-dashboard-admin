@@ -24,7 +24,7 @@ const dashboard = {
     },
     {
       id: 'machines',
-      title: 'Machines',
+      title: 'Máquinas',
       type: 'item',
       url: 'machines',
       icon: icons.DeploymentUnitOutlined,
@@ -32,7 +32,7 @@ const dashboard = {
     },
     {
       id: 'devices',
-      title: 'Devices',
+      title: 'Dispositivos',
       type: 'item',
       url: 'devices',
       icon: icons.BugOutlined,

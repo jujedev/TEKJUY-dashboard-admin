@@ -30,7 +30,7 @@ export default function CardDevice({ image, id, description, deviceId, host, int
         <Box sx={{  pt: 1, pb: 1, display: 'flex', justifyContent: 'center', backgroundColor: 'primary.lighter' }}>
           <Box sx={{ p: 1, backgroundColor: 'white', height: 60, width: 60, borderRadius: 10, boxShadow: 3}}>
             <CardMedia
-              sx={{ objectFit: 'cover', borderRadius: 2}}
+              sx={{ objectFit: 'contain', borderRadius: 2}}
               component="img"
               image={image}
               alt={description}

@@ -57,8 +57,8 @@ export default function Devices() {
     {
       image: v20,
       id: 5,
-      description: "Ubicado en Ingeniería",
-      deviceId: "PLC-S71500-01",
+      description: "Variador de frecuencia",
+      deviceId: "V20-01",
       host: "192.168.11.24",
       intervalTime: 60000,
       port: null,
