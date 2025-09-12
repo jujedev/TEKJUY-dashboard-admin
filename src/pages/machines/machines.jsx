@@ -1,4 +1,4 @@
-// material-ui
+/* eslint-disable prettier/prettier */
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
@@ -14,7 +14,7 @@ import panificadoraImg from '../../assets/images/machines/panificadora.png'
 export default function Machines() {
   const machines = [
     {
-      name: "Empaquetadora 1",
+      name: 'Empaquetadora 1',
       image: panificadoraImg,
       description: "Controlada por PLC S7-1200 y medidor Sentron PAC3200",
       status: "activo",
