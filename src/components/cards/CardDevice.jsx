@@ -1,6 +1,5 @@
 /* eslint-disable prettier/prettier */
 import Card from '@mui/material/Card';
-import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
@@ -27,7 +26,7 @@ export default function CardDevice({ image, id, description, deviceId, host, int
   return (
     <Card sx={{ height: '100%', width: '100%', textAlign: 'center', boxShadow: 3}}>
       {image && (
-        <Box sx={{  pt: 1, pb: 1, display: 'flex', justifyContent: 'center', backgroundColor: 'primary.lighter' }}>
+        <Box sx={{  pt: 1, pb: 1, display: 'flex', justifyContent: 'space-around', backgroundColor: 'primary.lighter',  }}>
           <Box sx={{ p: 1, backgroundColor: 'white', height: 60, width: 60, borderRadius: 10, boxShadow: 3}}>
             <CardMedia
               sx={{ objectFit: 'contain', borderRadius: 2}}
@@ -41,6 +40,12 @@ export default function CardDevice({ image, id, description, deviceId, host, int
               <Typography variant="h6">{deviceId}</Typography>
             </CardContent>
           </Box>
+          <Box sx={{ display: 'flex', alignItems: 'center'}}>
+            <Chip label={status} color={status == 'activo' ? 'success' : 'warning'} sx={{mt:0, mb:0, p:0, borderRadius: 9, width: 30, height: 30 }} />
+            <CardContent> 
+              <Typography variant="h6">RUN</Typography>
+            </CardContent>
+          </Box>
         </Box>
       )}
       <CardContent>
@@ -51,29 +56,65 @@ export default function CardDevice({ image, id, description, deviceId, host, int
           </Typography>
         )}
 
-        {/* Estado general */}
-        <Chip label={status} color={status == 'activo' ? 'success' : 'warning'} sx={{ mt:1, mb:2 }} />
+        {host && (
+            <Card sx={{ p: 1, boxShadow: 'none', border: 1, borderWidth: 1, borderColor: '#e9e9e9ff' }}>
+              <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 2 }}>
+                <Typography variant="body2" color="text.secondary">
+                  IP: 
+                </Typography>
+                <Typography variant="body2" color="text.primary">
+                  {host}
+                </Typography>
+              </Box>
+            </Card>
+        )}
 
-        {/* Métricas claves */}
-        {/*metrics && metrics.length > 0 ? (
-          <Stack container spacing={1.25}>
-            {metrics.map((m, idx) => (
-              <AnalyticMachine key={idx} {...m} />
-            ))}
-          </Stack>
-        ) : (
-          extra && 
-            <Typography variant="body2" color="text.secondary">
-              {extra}
+        {rack >=0 && rack != null && (
+          <Typography variant="body2" color="text.primary">
+              Rack: {rack}
             </Typography>
-        )*/}
+        )}
 
-        {/* Alarmas */}
-        {/*<Chip label="Sin fallas" color="default" sx={{ mt:2 }} />*/}
+        {slot && (
+          <Typography variant="body2" color="text.primary">
+              Slot: {slot}
+            </Typography>
+        )}
+
+        {port && (
+            <Card sx={{ p: 1, boxShadow: 'none', border: 1, borderWidth: 1, borderColor: '#e9e9e9ff' }}>
+              <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 2 }}>
+                <Typography variant="body2" color="text.secondary">
+                  puerto:
+                </Typography>
+                <Typography variant="body2" color="text.primary">
+                  {port}
+                </Typography>
+              </Box>
+            </Card>
+        )}
+
+        {slaveId && (
+          <Typography variant="body2" color="text.primary">
+              Slave Id: {slaveId}
+            </Typography>
+        )}
+
+        {type && (
+          <Typography variant="body2" color="text.primary">
+              Protocolo: {type}
+            </Typography>
+        )}
+
+        {intervalTime && (
+          <Typography variant="body2" color="text.primary">
+              Ciclo de lectura: {intervalTime} ms
+            </Typography>
+        )}
 
         {/* Última actualización */}
         <Typography variant="caption" display="block" sx={{ mt:3 }}>
-          Último dato: hace 10s
+          Último estado: hace 10s
         </Typography>
       </CardContent>
 
