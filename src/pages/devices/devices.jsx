@@ -50,6 +50,9 @@ export default function Devices() {
       axios.get('http://192.168.11.104:8080/api/devices/status')
        .then((res) => {
         // Transformamos el array en objeto {deviceId: status}
+        console.log("Datos obtenidos de status: " + Date());
+        console.log(res.data);
+        
         const map = {};
         res.data.forEach((d) => {
           map[d.deviceId] = d.status;
@@ -60,7 +63,7 @@ export default function Devices() {
     };
 
     fetchStatus();
-    const interval = setInterval(fetchStatus, 60000); // cada 60s
+    const interval = setInterval(fetchStatus, 10000); // cada 60s
     return () => clearInterval(interval); // limpiar al desmontar
   }, []);
 

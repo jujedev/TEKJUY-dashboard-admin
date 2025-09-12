@@ -50,9 +50,6 @@ export default function CardMachine({ name, image, description, status, metrics,
             </Typography>
         )}
 
-        {/* Alarmas */}
-        {/*<Chip label="Sin fallas" color="default" sx={{ mt:2 }} />*/}
-
         {/* Última actualización */}
         <Typography variant="caption" display="block" sx={{ mt:3 }}>
           Último dato: hace 10s

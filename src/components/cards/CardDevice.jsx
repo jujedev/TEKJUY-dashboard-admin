@@ -31,11 +31,8 @@ export default function CardDevice({ image, id, description, deviceId, host, int
             </CardContent>
           </Box>
           <Box sx={{ display: 'flex', alignItems: 'center'}}>
-            <Chip label color={status == 'RUN' ? 'success' : status == 'STOP' ? 'default' : status == 'ERROR' ? 'error' : 'warning'}
-            sx={{mt:0, mb:0, p:0, borderRadius: 9, width: 30, height: 30 }} />
-            <CardContent> 
-              <Typography variant="h6">{status}</Typography>
-            </CardContent>
+            <Chip label={status} color={status == 'RUN' ? 'success' : status == 'STOP' ? 'error' : status == 'ERROR' ? 'error' : status == 'UNKNOWN' ? 'default' : 'warning'}
+            sx={{mt:0, mb:0, p:0, borderRadius: 2, width: 80, height: 40, fontSize: 9 }} />
           </Box>
         </Box>
       )}
