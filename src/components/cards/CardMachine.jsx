@@ -8,7 +8,7 @@ import Chip from '@mui/material/Chip';
 import CardActions from '@mui/material/CardActions';
 import Stack from '@mui/material/Stack';
 
-// import componentes
+// import components
 import AnalyticMachine from 'components/cards/statistics/AnalyticMachine';
 
 export default function CardMachine({ name, image, description, status, metrics, extra }) {
