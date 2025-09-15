@@ -1,4 +1,6 @@
 /* eslint-disable prettier/prettier */
+import { Link } from 'react-router-dom';
+
 import Card from '@mui/material/Card';
 import Box from '@mui/material/Box';
 import CardContent from '@mui/material/CardContent';
@@ -78,8 +80,10 @@ export default function CardDevice({ image, id, description, deviceId, host, int
         </Typography>
       </CardContent>
 
-      <CardActions sx={{ justifyContent: 'center' }}>
-        <Button size="small">Configurar</Button>
+      <CardActions sx={{ justifyContent: "center" }}>
+        <Button size="small" LinkComponent={Link} to={`/configDevice/${id}`}>
+          Configurar
+        </Button>
         <Button size="small">Histórico</Button>
       </CardActions>
     </Card>

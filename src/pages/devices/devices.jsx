@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 // material-ui
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
@@ -72,7 +74,7 @@ export default function Devices() {
       <Grid sx={{ mb: -2.25 }} size={12}>
         <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
           <Typography variant="h5">Información sobre los dispositivos en la fábrica</Typography>
-          <Button variant="outlined" disabled>
+          <Button LinkComponent={Link} to="/addDevice" variant="outlined">
             Agregar dispositivo +
           </Button>
         </Box>

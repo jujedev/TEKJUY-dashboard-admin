@@ -20,6 +20,8 @@ const Shadow = Loadable(lazy(() => import('pages/component-overview/shadows')));
 const SamplePage = Loadable(lazy(() => import('pages/extra-pages/sample-page')));
 const Machines = Loadable(lazy(() => import('pages/machines/machines')));
 const Devices = Loadable(lazy(() => import('pages/devices/devices')));
+const AddDevice = Loadable(lazy(() => import('pages/devices/addDevice')));
+const ConfigDevice = Loadable(lazy(() => import('pages/devices/configDevice')));
 
 // ==============================|| MAIN ROUTING ||============================== //
 
@@ -53,6 +55,14 @@ const MainRoutes = {
         {
           path: 'devices',
           element: <Devices />
+        },
+        {
+          path: 'addDevice',
+          element: <AddDevice />
+        },
+        {
+          path: 'configDevice/:id',
+          element: <ConfigDevice />
         },
         {
           path: 'typography',
