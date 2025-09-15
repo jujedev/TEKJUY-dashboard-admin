@@ -15,7 +15,7 @@ import Box from '@mui/material/Box';
 // project imports
 import MainCard from 'components/MainCard';
 import AnalyticEcommerce from 'components/cards/statistics/AnalyticEcommerce';
-import MonthlyBarChart from 'sections/dashboard/default/MonthlyBarChart';
+import PowerFactorBarChart from 'sections/dashboard/default/PowerFactorBarChart';
 import ReportAreaChart from 'sections/dashboard/default/ReportAreaChart';
 import UniqueVisitorCard from 'sections/dashboard/default/UniqueVisitorCard';
 import SaleReportCard from 'sections/dashboard/default/SaleReportCard';
@@ -70,29 +70,25 @@ export default function DashboardDefault() {
         <AnalyticEcommerce title="Productividad" count="35,078" percentage={27.4} isLoss color="warning" extra="20,395" />
       </Grid>
       <Grid sx={{ display: { sm: 'none', md: 'block', lg: 'none' } }} size={{ md: 8 }} />
+      
       {/* row 2 */}
       <Grid size={{ xs: 12, md: 7, lg: 8 }}>
         <UniqueVisitorCard />
       </Grid>
+
       <Grid size={{ xs: 12, md: 5, lg: 4 }}>
-        <Grid container alignItems="center" justifyContent="space-between">
-          <Grid>
-            <Typography variant="h5">Income Overview</Typography>
-          </Grid>
-          <Grid />
-        </Grid>
-        <MainCard sx={{ mt: 2 }} content={false}>
+        <MainCard sx={{ mt: 2, boxShadow: 10 }} content={false}>
           <Box sx={{ p: 3, pb: 0 }}>
-            <Stack sx={{ gap: 2 }}>
-              <Typography variant="h6" color="text.secondary">
-                This Week Statistics
+            <Stack sx={{ gap: 2, alignItems: 'center'}}>
+              <Typography variant="h5" color="text.primary">
+                Factor de Potencia
               </Typography>
-              <Typography variant="h3">$7,650</Typography>
             </Stack>
           </Box>
-          <MonthlyBarChart />
+          <PowerFactorBarChart />
         </MainCard>
       </Grid>
+
       {/* row 3 */}
       <Grid size={{ xs: 12, md: 7, lg: 8 }}>
         <Grid container alignItems="center" justifyContent="space-between">

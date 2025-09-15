@@ -1,6 +1,6 @@
 // src/pages/devices/ConfigDevice.jsx
 import { useState, useEffect } from "react";
-import { TextField, MenuItem, Box, Typography, Button, Stack, Card,CardContent  } from "@mui/material";
+import { TextField, MenuItem, Box, Typography, Button, Alert, Snackbar  } from "@mui/material";
 import { useNavigate, useParams, Link } from "react-router-dom";
 import axios from "axios";
 
@@ -9,6 +9,11 @@ export default function ConfigDevice() {
   const [device, setDevice] = useState(null);
   const [isEditing, setIsEditing] = useState(false); 
   const navigate = useNavigate();
+
+  // Estado para alertas
+  const [open, setOpen] = useState(false);
+  const [message, setMessage] = useState("");
+  const [severity, setSeverity] = useState("success");
 
   // Cargar datos del dispositivo
   useEffect(() => {
@@ -29,26 +34,31 @@ export default function ConfigDevice() {
     if (!window.confirm("¿Seguro que quieres eliminar este dispositivo?")) return;
     try {
       await axios.delete(`http://192.168.11.104:8080/api/devices/${id}`);
-      alert("🗑️ Dispositivo eliminado");
-      navigate("/devices");
+      setMessage(" 🗑️ Dispositivo eliminado ");
+      setSeverity("success");
+      setOpen(true);
+      //navigate("/devices");
     } catch (err) {
       console.error(err);
-      alert("❌ Error al eliminar el dispositivo");
-    alert("Button preddes")
+      setMessage(" ❌ Error al eliminar el dispositivo ");
+      setSeverity("error");
+      setOpen(true);
     }
   };
 
   const handleUpdate = async () => {
-    console.log("Test");
-    
     try {
       await axios.put(`http://192.168.11.104:8080/api/devices/${id}`, device);
-      alert("✅ Dispositivo actualizado");
+      setMessage(" ✅ Dispositivo actualizado ");
+      setSeverity("success");
+      setOpen(true);
       setIsEditing(false); // vuelve a modo lectura
-      navigate("/devices"); // opcional: volver a la lista
+      //navigate("/devices"); // opcional: volver a la lista
     } catch (err) {
       console.error(err);
-      alert("❌ Error al actualizar el dispositivo");
+      setMessage(" ❌ Error al actualizar el dispositivo ");
+      setSeverity("error");
+      setOpen(true);
     }
   };
 
@@ -138,7 +148,6 @@ export default function ConfigDevice() {
             fullWidth
             color="primary"
             onClick={handleUpdate}
-            // guarda cambios
           >
             Guardar
           </Button>
@@ -153,6 +162,27 @@ export default function ConfigDevice() {
           Eliminar
         </Button>
       </Box>
+
+      {/* Snackbar con Alert */}
+      <Snackbar 
+        open={open}
+        autoHideDuration={3000}
+        onClose={ (_, reason) => {
+          // prevenimos que cierre por 2clickaway" (cuando el usuario hace click afuera)
+          if(reason === "clickaway") return;
+          
+          setOpen(false)
+          
+          if(severity === "success"){
+            navigate("/devices");
+          }
+        }}
+        anchorOrigin={{vertical: "top", horizontal: "center"}}
+        sx={{ width: "70%"}}>
+        <Alert severity={severity} variant="filled" onClose={() => setOpen(false)} sx={{ width: "100%", color: 'white'}}>
+          {message}
+        </Alert>
+      </Snackbar>
     </Box>
   );
 }
