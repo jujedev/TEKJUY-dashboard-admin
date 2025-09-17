@@ -38,7 +38,7 @@ export default function Devices() {
           return {
             ...d,
             image,
-            intervalTime: d.interval_time
+            intervalTime: d.intervalTime
           };
         });
         setDevices(mapped);

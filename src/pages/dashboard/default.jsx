@@ -30,6 +30,9 @@ import avatar1 from 'assets/images/users/avatar-1.png';
 import avatar2 from 'assets/images/users/avatar-2.png';
 import avatar3 from 'assets/images/users/avatar-3.png';
 import avatar4 from 'assets/images/users/avatar-4.png';
+import ActivePowerCard from '../../sections/dashboard/default/ActivePowerCard';
+import HarmonicsCurrentCard from '../../sections/dashboard/default/HarmonicsCurrentCard';
+import VoltageGauge from '../../sections/dashboard/default/VoltageGauge';
 
 // avatar style
 const avatarSX = {
@@ -58,38 +61,47 @@ export default function DashboardDefault() {
         <Typography variant="h5">Medición de Energía</Typography>
       </Grid>
       <Grid size={{ xs: 12, sm: 6, md: 4, lg: 3 }}>
-        <AnalyticEcommerce title="OEE" count="4,42,236" percentage={59.3} extra="35,000" />
+        <AnalyticEcommerce title="Energía consumida última hora" count="4,42,236" percentage={59.3} extra="35,000" />
       </Grid>
       <Grid size={{ xs: 12, sm: 6, md: 4, lg: 3 }}>
-        <AnalyticEcommerce title="Performance" count="78,250" percentage={70.5} extra="8,900" />
+        <AnalyticEcommerce title="Energía consumida último día" count="78,250" percentage={70.5} extra="8,900" />
       </Grid>
       <Grid size={{ xs: 12, sm: 6, md: 4, lg: 3 }}>
-        <AnalyticEcommerce title="Disponibilidad" count="18,800" percentage={27.4} isLoss color="warning" extra="1,943" />
+        <AnalyticEcommerce title="Energía consumida última semana" count="18,800" percentage={27.4} isLoss color="warning" extra="1,943" />
       </Grid>
       <Grid size={{ xs: 12, sm: 6, md: 4, lg: 3 }}>
-        <AnalyticEcommerce title="Productividad" count="35,078" percentage={27.4} isLoss color="warning" extra="20,395" />
+        <AnalyticEcommerce title="Energía consumida último mes" count="35,078" percentage={27.4} isLoss color="warning" extra="20,395" />
       </Grid>
       <Grid sx={{ display: { sm: 'none', md: 'block', lg: 'none' } }} size={{ md: 8 }} />
       
-      {/* row 2 */}
+      {/* row 2 
       <Grid size={{ xs: 12, md: 7, lg: 8 }}>
         <UniqueVisitorCard />
+      </Grid> */}
+
+      <Grid size={{ xs: 12, md: 12, lg: 12 }} >
+        <ActivePowerCard />
       </Grid>
 
       <Grid size={{ xs: 12, md: 5, lg: 4 }}>
-        <MainCard sx={{ mt: 2, boxShadow: 10 }} content={false}>
-          <Box sx={{ p: 3, pb: 0 }}>
-            <Stack sx={{ gap: 2, alignItems: 'center'}}>
-              <Typography variant="h5" color="text.primary">
-                Factor de Potencia
-              </Typography>
-            </Stack>
-          </Box>
+        <Typography variant="h5" color="text.primary">
+          Factor de Potencia
+        </Typography>
+        <MainCard sx={{ mt: 2 }} content={false}>
           <PowerFactorBarChart />
         </MainCard>
       </Grid>
 
-      {/* row 3 */}
+      <Grid size={{ xs: 12, md: 5, lg: 4 }}>
+        <Typography variant="h5" color="text.primary">
+          Voltajes
+        </Typography>
+        <MainCard sx={{ mt: 2 }} >
+          <VoltageGauge />
+        </MainCard>
+      </Grid>
+
+      {/* row 3 
       <Grid size={{ xs: 12, md: 7, lg: 8 }}>
         <Grid container alignItems="center" justifyContent="space-between">
           <Grid>
@@ -100,7 +112,10 @@ export default function DashboardDefault() {
         <MainCard sx={{ mt: 2 }} content={false}>
           <OrdersTable />
         </MainCard>
-      </Grid>
+      </Grid> 
+      
+      Este puede funcionar para las paradas de máquina*/}
+      
       <Grid size={{ xs: 12, md: 5, lg: 4 }}>
         <Grid container alignItems="center" justifyContent="space-between">
           <Grid>
@@ -126,6 +141,11 @@ export default function DashboardDefault() {
           <ReportAreaChart />
         </MainCard>
       </Grid>
+
+      <Grid size={{ xs: 12, md: 12, lg: 12 }} >
+        <HarmonicsCurrentCard />
+      </Grid>
+
       {/* row 4 */}
       <Grid size={{ xs: 12, md: 7, lg: 8 }}>
         <SaleReportCard />
@@ -215,33 +235,9 @@ export default function DashboardDefault() {
             </ListItem>
           </List>
         </MainCard>
-        <MainCard sx={{ mt: 2 }}>
-          <Stack sx={{ gap: 3 }}>
-            <Grid container justifyContent="space-between" alignItems="center">
-              <Grid>
-                <Stack>
-                  <Typography variant="h5" noWrap>
-                    Help & Support Chat
-                  </Typography>
-                  <Typography variant="caption" color="secondary" noWrap>
-                    Typical replay within 5 min
-                  </Typography>
-                </Stack>
-              </Grid>
-              <Grid>
-                <AvatarGroup sx={{ '& .MuiAvatar-root': { width: 32, height: 32 } }}>
-                  <Avatar alt="Remy Sharp" src={avatar1} />
-                  <Avatar alt="Travis Howard" src={avatar2} />
-                  <Avatar alt="Cindy Baker" src={avatar3} />
-                  <Avatar alt="Agnes Walker" src={avatar4} />
-                </AvatarGroup>
-              </Grid>
-            </Grid>
-            <Button size="small" variant="contained" sx={{ textTransform: 'capitalize' }}>
-              Need Help?
-            </Button>
-          </Stack>
-        </MainCard>
+
+        
+
       </Grid>
     </Grid>
   );

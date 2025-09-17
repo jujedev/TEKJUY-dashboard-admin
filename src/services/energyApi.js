@@ -11,3 +11,13 @@ export async function getActivePower(range = "1h") {
   const res = await axios.get(`${API_URL}/active-power?range=${range}`);
   return res.data; 
 }
+
+export async function getCurrentHarmonics(range = "1h") {
+  const res = await axios.get(`${API_URL}/current-harmonics?range=${range}`);
+  return res.data; 
+}
+
+export async function getVoltages() {
+  const res = await axios.get(`${API_URL}/voltages`);
+  return res.data; // { l1: 228.5, l2: 229.1, l3: 227.7 }
+}

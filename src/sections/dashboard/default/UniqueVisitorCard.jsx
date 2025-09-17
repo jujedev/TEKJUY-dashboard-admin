@@ -20,7 +20,7 @@ export default function UniqueVisitorCard() {
     <>
       <Grid container alignItems="center" justifyContent="space-between">
         <Grid>
-          <Typography variant="h5">Unique Visitor</Typography>
+          <Typography variant="h5">Potencia Activa</Typography>
         </Grid>
         <Grid>
           <Stack direction="row" sx={{ alignItems: 'center' }}>

@@ -2,6 +2,7 @@
 import { useTheme } from '@mui/material/styles';
 
 import { BarChart } from '@mui/x-charts/BarChart';
+import { color } from 'framer-motion';
 import { useEffect, useState } from "react";
 import { getPowerFactor } from "services/energyApi";
 
@@ -35,11 +36,17 @@ export default function PowerFactorBarChart() {
       series={[{ data, label: 'Factor de Potencia', animation: true }]}
       xAxis={[{ data: xLabels, scaleType: 'band', disableLine: true, disableTicks: true, tickLabelStyle: axisFonstyle }]}
       barLabel="value"
-      yAxis={[{ position: 'none', min: 0, max: 1 }]}
-      slotProps={{ bar: { rx: 5, ry: 5 } }}
+      yAxis={[{
+      min: 0,
+      max: 1,
+        lineStyle: { stroke: theme.palette.secondary.light, strokeWidth: 1.5 }, // línea Y
+        tickStyle: { stroke: theme.palette.secondary.light }, // palitos de los ticks
+        tickLabelStyle: { fill: theme.palette.secondary.light, fontSize: 12 }, // texto de ticks
+      },]}
+      slotProps={{ bar: { rx: 5, ry: 5 }, barLabel: { style: { fill: 'white' } } }}
       axisHighlight={{ x: 'none' }}
       margin={{ left: 20, right: 20 }}
-      colors={[theme.palette.info.light]}
+      colors={[theme.palette.primary.dark]}
       sx={{ '& .MuiBarElement-root:hover': { opacity: 0.6 } }}
     />
   );
