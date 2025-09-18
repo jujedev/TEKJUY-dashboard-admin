@@ -22,6 +22,11 @@ export async function getVoltages() {
   return res.data; // { l1: 228.5, l2: 229.1, l3: 227.7 }
 }
 
+export async function getActiveEnergyImportedYesterday() {
+  const res = await axios.get(`${API_URL}/active-energy-imported/yesterday`);
+  return res.data; 
+}
+
 export async function getActiveEnergyImportedToday() {
   const res = await axios.get(`${API_URL}/active-energy-imported/today`);
   return res.data; 
@@ -29,6 +34,11 @@ export async function getActiveEnergyImportedToday() {
 
 export async function getActiveEnergyImportedMonth() {
   const res = await axios.get(`${API_URL}/active-energy-imported/month`);
+  return res.data; 
+}
+
+export async function getActiveEnergyImportedPreviousMonth() {
+  const res = await axios.get(`${API_URL}/active-energy-imported/previous-month`);
   return res.data; 
 }
 

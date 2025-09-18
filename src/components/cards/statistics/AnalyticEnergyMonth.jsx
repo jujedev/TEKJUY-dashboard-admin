@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import PropTypes from 'prop-types';
-import { getActiveEnergyImportedMonth } from "services/energyApi";
+import { getActiveEnergyImportedMonth, getActiveEnergyImportedPreviousMonth } from "services/energyApi";
 // material-ui
 import Chip from '@mui/material/Chip';
 import Grid from '@mui/material/Grid';
@@ -20,12 +20,15 @@ const iconSX = { fontSize: '0.75rem', color: 'inherit', marginLeft: 0, marginRig
 export default function AnalyticEnergyMonth({ color = 'primary', title, count, percentage, isLoss, extra }) {
   
   const [month, setMonth] = useState(0);
-  
+  const [previousMonth, setPreviousMonth] = useState(0);
+
   useEffect(() => {
       async function fetchData() {
         try {
           const monthValue = await getActiveEnergyImportedMonth();
+          const previousMonthValue = await getActiveEnergyImportedPreviousMonth();
           setMonth(monthValue);
+          setPreviousMonth(previousMonthValue)
         } catch (err) {
           console.error("Error cargando energía", err);
         }
@@ -33,9 +36,11 @@ export default function AnalyticEnergyMonth({ color = 'primary', title, count, p
       fetchData();
     }, []);
 
+  const variation = previousMonth > 0 ? ((month - previousMonth) / previousMonth) * 100 : 0;
+
   return (
     <MainCard contentSX={{ p: 2.25 }}>
-      <Stack sx={{ gap: 0.5 }}>
+      <Stack sx={{ gap: 1.5 }}>
         <Typography variant="h6" color="text.secondary">
           {title}
         </Typography>
@@ -49,9 +54,9 @@ export default function AnalyticEnergyMonth({ color = 'primary', title, count, p
             <Grid>
               <Chip
                 variant="combined"
-                color={color}
-                icon={isLoss ? <FallOutlined style={iconSX} /> : <RiseOutlined style={iconSX} />}
-                label={`${percentage}%`}
+                color={variation < 0 ? "success" : "error"}
+                icon={variation < 0 ? <FallOutlined style={iconSX} /> : <RiseOutlined style={iconSX} />}
+                label={`Ahorro: ${variation.toFixed(2)}%`}
                 sx={{ ml: 1.25, pl: 1 }}
                 size="small"
               />
@@ -59,13 +64,13 @@ export default function AnalyticEnergyMonth({ color = 'primary', title, count, p
           )}
         </Grid>
       </Stack>
-      <Box sx={{ pt: 2.25 }}>
+      <Box sx={{ pt: 2 }}>
         <Typography variant="caption" color="text.secondary">
-          Su consumo en pesos ${' '}
+          Su consumo el mes pasado: {' '}
           <Typography variant="caption" sx={{ color: `${color || 'primary'}.main` }}>
-            {extra}
+            {previousMonth.toFixed(2)}
           </Typography>{' '}
-          ARS
+          kWh
         </Typography>
       </Box>
     </MainCard>
