@@ -21,3 +21,20 @@ export async function getVoltages() {
   const res = await axios.get(`${API_URL}/voltages`);
   return res.data; // { l1: 228.5, l2: 229.1, l3: 227.7 }
 }
+
+export async function getActiveEnergyImportedToday() {
+  const res = await axios.get(`${API_URL}/active-energy-imported/today`);
+  return res.data; 
+}
+
+export async function getActiveEnergyImportedMonth() {
+  const res = await axios.get(`${API_URL}/active-energy-imported/month`);
+  return res.data; 
+}
+
+export async function getActiveEnergyImportedRange(start, stop, deviceId) {
+  const res = await axios.get(`${API_URL}/range`, {
+    params: { start, stop, deviceId }
+  });
+  return res.data;
+}

@@ -1,7 +1,5 @@
 // material-ui
 import Avatar from '@mui/material/Avatar';
-import AvatarGroup from '@mui/material/AvatarGroup';
-import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
@@ -10,26 +8,21 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
 
 // project imports
 import MainCard from 'components/MainCard';
 import AnalyticEcommerce from 'components/cards/statistics/AnalyticEcommerce';
+import AnalyticEnergyToday from 'components/cards/statistics/AnalyticEnergyToday';
+import AnalyticEnergyMonth from 'components/cards/statistics/AnalyticEnergyMonth';
 import PowerFactorBarChart from 'sections/dashboard/default/PowerFactorBarChart';
 import ReportAreaChart from 'sections/dashboard/default/ReportAreaChart';
-import UniqueVisitorCard from 'sections/dashboard/default/UniqueVisitorCard';
 import SaleReportCard from 'sections/dashboard/default/SaleReportCard';
-import OrdersTable from 'sections/dashboard/default/OrdersTable';
 
 // assets
 import GiftOutlined from '@ant-design/icons/GiftOutlined';
 import MessageOutlined from '@ant-design/icons/MessageOutlined';
 import SettingOutlined from '@ant-design/icons/SettingOutlined';
 
-import avatar1 from 'assets/images/users/avatar-1.png';
-import avatar2 from 'assets/images/users/avatar-2.png';
-import avatar3 from 'assets/images/users/avatar-3.png';
-import avatar4 from 'assets/images/users/avatar-4.png';
 import ActivePowerCard from '../../sections/dashboard/default/ActivePowerCard';
 import HarmonicsCurrentCard from '../../sections/dashboard/default/HarmonicsCurrentCard';
 import VoltageGauge from '../../sections/dashboard/default/VoltageGauge';
@@ -55,15 +48,23 @@ const actionSX = {
 
 export default function DashboardDefault() {
   return (
-    <Grid container rowSpacing={4.5} columnSpacing={2.75}>
+    <Grid container rowSpacing={4} columnSpacing={2.75}>
       {/* row 1 */}
       <Grid sx={{ mb: -2.25 }} size={12}>
         <Typography variant="h5">Medición de Energía</Typography>
       </Grid>
+      
+      {/*  <CardEnergy />*/}
+
       <Grid size={{ xs: 12, sm: 6, md: 4, lg: 3 }}>
-        <AnalyticEcommerce title="Energía consumida última hora" count="4,42,236" percentage={59.3} extra="35,000" />
+        <AnalyticEnergyToday title="Energía consumida hoy" percentage={59.3} extra="35,000" />
       </Grid>
+      
       <Grid size={{ xs: 12, sm: 6, md: 4, lg: 3 }}>
+        <AnalyticEnergyMonth title="Energía consumida este mes" percentage={59.3} extra="35,000" />
+      </Grid>
+
+      {/* <Grid size={{ xs: 12, sm: 6, md: 4, lg: 3 }}>
         <AnalyticEcommerce title="Energía consumida último día" count="78,250" percentage={70.5} extra="8,900" />
       </Grid>
       <Grid size={{ xs: 12, sm: 6, md: 4, lg: 3 }}>
@@ -72,8 +73,11 @@ export default function DashboardDefault() {
       <Grid size={{ xs: 12, sm: 6, md: 4, lg: 3 }}>
         <AnalyticEcommerce title="Energía consumida último mes" count="35,078" percentage={27.4} isLoss color="warning" extra="20,395" />
       </Grid>
+      
       <Grid sx={{ display: { sm: 'none', md: 'block', lg: 'none' } }} size={{ md: 8 }} />
       
+      */}
+
       {/* row 2 
       <Grid size={{ xs: 12, md: 7, lg: 8 }}>
         <UniqueVisitorCard />
